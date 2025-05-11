@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AptabaseProvider, AptabaseOptions } from "@aptabase/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AptabaseProvider appKey="A-SH-6148128752" options={{ host: "https://aptabase-bts.host-dcode.fr" }}>
+          {children}
+        </AptabaseProvider>
       </body>
     </html>
   );

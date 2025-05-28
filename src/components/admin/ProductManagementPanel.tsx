@@ -27,15 +27,15 @@ export default function ProductManagementPanel() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   const fetchProducts = async () => {
     const { data, error } = await supabase.from("produits").select("*");
     if (error) console.error(error);
     else setProducts(data as Product[]);
   };
+
+  useEffect(() => {
+    fetchProducts();
+  });
 
   const handleAdd = () => {
     setSelectedProduct(null);

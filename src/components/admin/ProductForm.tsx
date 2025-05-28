@@ -47,7 +47,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ product, onClose }) => {
         onClose(true);
       }
     } else {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("produits")
         .insert([{ nom, description, prix, volume, quantite }])
         .select();

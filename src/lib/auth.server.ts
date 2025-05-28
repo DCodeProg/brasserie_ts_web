@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";

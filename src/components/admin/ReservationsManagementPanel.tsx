@@ -9,7 +9,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Button,
   IconButton,
   Dialog,
   DialogTitle,
@@ -34,15 +33,16 @@ export default function ReservationManagementPanel() {
   const [selectedReservation, setSelectedReservation] =
     useState<Reservation | null>(null);
 
-  useEffect(() => {
-    fetchReservations();
-  }, []);
 
   const fetchReservations = async () => {
     const { data, error } = await supabase.from("reservations").select("*");
     if (error) console.error(error);
     else setReservations(data as Reservation[]);
   };
+
+  useEffect(() => {
+    fetchReservations();
+  });
 
   const handleEdit = (res: Reservation) => {
     setSelectedReservation(res);

@@ -9,7 +9,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Button,
   IconButton,
   Dialog,
   DialogTitle,
@@ -32,9 +31,6 @@ export default function AccountManagementPanel() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
 
-  useEffect(() => {
-    fetchAccounts();
-  }, []);
 
   const fetchAccounts = async () => {
     const { data, error } = await supabase.from("utilisateurs").select("*");
@@ -42,10 +38,9 @@ export default function AccountManagementPanel() {
     else setAccounts(data as Account[]);
   };
 
-  const handleAdd = () => {
-    setSelectedAccount(null);
-    setIsDialogOpen(true);
-  };
+  useEffect(() => {
+    fetchAccounts();
+  });
 
   const handleEdit = (account: Account) => {
     setSelectedAccount(account);

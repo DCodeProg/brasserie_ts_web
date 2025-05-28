@@ -1,13 +1,12 @@
 // src/app/layout.tsx
 import * as React from "react";
-import ClientThemeProvider from "@/components/ClientThemeProvider";
-import MyAppBar from "@/components/MyAppBar";
 import { rye, notoSans } from "@/theme/fonts";
+import AppShell from "@/components/AppShell";
 
 export const metadata = {
-  title: "My Next.js & Supabase App",
+  title: "Brasserie T&S",
   description:
-    "A cleanly organized Next.js app using Material Design with a dark theme.",
+    "Bienvenue sur le site de la Brasserie T&S, votre destination pour les meilleures bières artisanales.",
 };
 
 export default function RootLayout({
@@ -21,10 +20,7 @@ export default function RootLayout({
     <html lang="fr">
       <head />
       <body className={classNames}>
-        <ClientThemeProvider>
-          <MyAppBar />
-          {children}
-        </ClientThemeProvider>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

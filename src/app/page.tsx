@@ -2,11 +2,10 @@
 import React from "react";
 import { Container, Typography } from "@mui/material";
 import ProductList from "@/components/ProductList";
-import { getProducts } from "@/lib/supabase.server";
 import type { Product } from "@/types/product";
+import { getProducts } from "@/utils/supabase/server";
 
 export default async function HomePage() {
-  // Fetch products on the server.
   const products: Product[] = await getProducts();
 
   return (
